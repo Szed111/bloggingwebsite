@@ -1,0 +1,14 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<div class="container bg-2">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="p-3 ">
+            <h2>Are you sure you want to delete the post?"{{object.title}}</h2>
+            <button type="submit" class="btn btn-outline-danger">Delete Post</button>
+            <a class="btn btn-outline-secondary" href="{% url 'post-detail' object.id %}">Canel</a>
+        </div>
+    </form>
+    <br>
+</div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<div class="container">
+    <div class="container bg-3">
+        <h1>Posts by {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h1>
+    </div>
+</div>
+{% for post in posts %}
+<!-- <h1>{{post.title}}</h1>
+<p>{{post.author}} on {{post.date_posted}}</p>
+<p>{{post.content}}</p> -->
+<div id="loop" class="container bg-2 d-flex justify-content-start">
+    <div class="p-2"><img class="img-1" src="{{ post.author.profile.image.url }}" alt="Profile"></div>
+    <div class="p-2 w-100">
+        <a href="{% url 'user-posts' post.author.username %}" class="username-1">{{post.author}}</a>
+        <b style="color: #9c9b9b; font-weight: normal;">{{post.date_posted|date:"F d, Y"}}</b>
+        <hr>
+        <h3><a href="{% url 'post-detail' post.id %}" class="article-title">{{post.title}}</a></h3>
+        <p class="message-1">{{post.content}}</p>
+    </div>
+</div>
+<br>
+{% endfor %}
+<div class="container">
+    <div class="container bg-3">
+        {% if is_paginated %}
+        {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+        {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+        <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %} <a class="btn btn-outline-info mb-4"
+            href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+            {% endif %}
+
+            {% endif %}
+    </div>
+</div>
+{% endblock content %}
+
+<!--<div id="loop" class="container bg-2 d-flex justify-content-start">
+                        <div class="p-2">
+                            <img class="img-1" src="files/demo.jpeg" alt="Profile">
+                        </div>
+                        <div class="p-2 w-100">
+                            <a href="#" class="username-1">UserName</a>
+                            <b style="color: #9c9b9b; font-weight: normal;">Data</b>
+                            <hr>
+                            <h3>Message Heading</h3>
+                            <pre class="message-1">Message
+                                informantion
+                            </pre>
+                        </div>
+                </div>-->

@@ -1,0 +1,49 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<!-- <h1>{{post.title}}</h1>
+<p>{{post.author}} on {{post.date_posted}}</p>
+<p>{{post.content}}</p> -->
+<div id="loop" class="container bg-2 d-flex justify-content-start">
+    <div class="p-2"><img class="img-1" src="{{ object.author.profile.image.url }}" alt="Profile"></div>
+    <div class="p-2 w-100">
+        <a href="{% url 'user-posts' object.author.username %}" class="username-1">{{object.author}}</a>
+        <b style="color: #9c9b9b; font-weight: normal;">{{object.date_posted|date:"F d, Y"}}</b>
+        <hr>
+        {% if object.author == user %}
+        <a class="btn btn-outline-secondary" href="{% url 'post-update' object.id %}">Update</a>
+        <a class="btn btn-outline-danger" href="{% url 'post-delete' object.id %}">Delte Post</a>
+        {% endif%}
+        <h3 class="article-title">{{object.title}}</h3>
+        <p class="message-1">{{object.content}}</p>
+    </div>
+</div>
+<div id="loop" class="container bg-2">
+    <h4>Comments</h4>
+    <a class="comm" href="{% url 'post-comment' post.pk %}">Add Comments</a>
+    <br>
+    {% for comment in post.comments.all %}
+    <div class="container comm-1 p-2">
+        <b>{{ comment.name }}</b>
+        <small class="text-info float-right">{{ comment.created_on|date:"F d, Y" }}</small>
+        <hr>
+        <p style="padding-left: 10%;">{{ comment.body }}</p>
+    </div>
+    <div class="p-1"></div>
+    {% endfor %}
+</div>
+{% endblock content %}
+
+<!--<div id="loop" class="container bg-2 d-flex justify-content-start">
+                        <div class="p-2">
+                            <img class="img-1" src="files/demo.jpeg" alt="Profile">
+                        </div>
+                        <div class="p-2 w-100">
+                            <a href="#" class="username-1">UserName</a>
+                            <b style="color: #9c9b9b; font-weight: normal;">Data</b>
+                            <hr>
+                            <h3>Message Heading</h3>
+                            <pre class="message-1">Message
+                                informantion
+                            </pre>
+                        </div>
+                </div>-->
