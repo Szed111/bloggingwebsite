@@ -1,4 +1,142 @@
 {% extends "blog/base.html" %}
 {% block content %}
-<h1>about page</h1>
+
+<head>
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font: 400 15px/1.8 "Lato", sans-serif;
+        }
+
+        .bgimg-1,
+        .bgimg-2,
+        .bgimg-3 {
+            position: relative;
+            opacity: 0.65;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+
+        .text-pink {
+            color: #bc2a8d;
+        }
+
+        .text-Yellow {
+            color: yellow;
+        }
+
+        .bgimg-1 {
+            background-image: url("https://blog.goldensubmarine.com/wp-content/uploads/artificial-intelligence.jpeg");
+            min-height: 100%;
+        }
+
+        .bgimg-2 {
+            background-image: url("https://i.imgur.com/sjvtlq0.png");
+            min-height: 400px;
+        }
+
+        .bgimg-3 {
+            background-image: url("https://wallpapercave.com/wp/wp3998861.jpg");
+            min-height: 400px;
+        }
+
+        .caption {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            text-align: center;
+            color: #000;
+        }
+
+        .caption span.border {
+            background-color: #111;
+            color: #fff;
+            padding: 18px;
+            font-size: 25px;
+            letter-spacing: 10px;
+        }
+
+        h3 {
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font: 20px "Lato", sans-serif;
+            color: #111;
+        }
+
+        @media only screen and (max-device-width: 1024px) {
+
+            .bgimg-1,
+            .bgimg-2,
+            .bgimg-3 {
+                background-attachment: scroll;
+            }
+        }
+
+        .bga-1 {
+            background-image: linear-gradient(rgba(51, 51, 51, 0.5), rgba(51, 51, 51, 0.5)), url("https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fdam%2Fimageserve%2F1086728780%2F960x0.jpg%3Ffit%3Dscale");
+            max-width: 100%;
+            height: 450px;
+            position: relative;
+        }
+    </style>
+</head>
+<div class="bg-dark">
+    <div class="bga-1">
+        <div class="caption">
+            <span class="border text-uppercase">Learning Blog</span>
+        </div>
+
+    </div>
+
+
+    <div class="bgimg-1">
+        <div class="caption">
+            <span class="border">About US</span>
+        </div>
+    </div>
+
+    <div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
+        <h3 style="text-align:center;">Learning Blog</h3>
+        <p>An education blog or edublog is a blog (Learning Blog) created for educational purposes. Blogs offer a huge
+            instructional potential as an online resource.Instructor Learning Blog usually contain course content,
+            course management information, general commentary to all students about their learning progress, etc.</p>
+    </div>
+
+    <div id="SocialWar" class="bgimg-2">
+        <div class="caption">
+            <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">Contact Us</span>
+        </div>
+    </div>
+
+    <div style="position:relative;">
+        <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+            <a href="mailto:learningblog234@gmail.com?subject = Feedback&body = Message"
+                class="fa fa-envelope text-danger" aria-hidden="true"> LearningBlog</a>
+        </div>
+    </div>
+
+    <div id="KICKWar" class="bgimg-3">
+        <div class="caption">
+            <span class="border">Languages</span>
+        </div>
+    </div>
+
+    <div style="position:relative;">
+        <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+            <p class="text-uppercase">HTML, CSS, Bootstrap, Python, Django, Sqlite </p>
+        </div>
+    </div>
+
+    <div class="bgimg-1">
+        <div class="caption">
+            <span class="border">THANKS FOR VISITING US!</span>
+        </div>
+    </div>
+</div>
 {% endblock content %}
