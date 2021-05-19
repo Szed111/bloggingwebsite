@@ -125,9 +125,9 @@ class UserPostListView(ListView):
         return Post.objects.filter(author=user).order_by("-date_posted")
 
 
-def home(request):
-    context = {"posts": Post.objects.all()}
-    return render(request, "blog/home.html", context)
+# def home(request):
+#     context = {"posts": Post.objects.all()}
+#     return render(request, "blog/home.html", context)
 
 
 def about(request):
