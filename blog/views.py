@@ -41,7 +41,7 @@ class PostListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(PostListView, self).get_context_data(**kwargs)
-        # context["linkinfo"] = ImpLink.objects.all()
+        context["linkinfo"] = ImpLink.objects.all()
         list_exam = Post.objects.all().order_by("-id")
         paginator = Paginator(list_exam, self.paginate_by)
 
