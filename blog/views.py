@@ -1,3 +1,4 @@
+from typing import ContextManager
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.views.generic import (
@@ -9,9 +10,11 @@ from django.views.generic import (
 )
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator
 
 # importing Posts data from database
 from .models import Post, Comment
+from .models import ImpLink
 
 # dummy data
 # posts = [
@@ -27,14 +30,20 @@ from .models import Post, Comment
 class PostListView(ListView):
     model = Post
     template_name = "blog/home.html"
-    context_object_name = "posts"
     # since we are passing context as posts in home view function
     #  but by default class calls it objectlist or we can change
     # the variable as below
-    ordering = ["-date_posted"]
     # negative sign means dates from newest to oldest
     #  and it sets the order of the posts
-    paginate_by = 5
+    # context_object_name = "posts"
+    # paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+        posts = Post.objects.all().order_by("-id")
+        linkinfo = ImpLink.objects.all()
+        context = {"posts": posts, "linkinfo": linkinfo}
+
+        return context
 
 
 class PostDetailView(DetailView):
@@ -72,7 +81,6 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
     model = Comment
     fields = ["body"]
     template_name = "blog/comment.html"
-
     # overriding form vaild method to add author id
     # and name when a blog is created
     def form_valid(self, form):
@@ -124,3 +132,7 @@ def home(request):
 
 def about(request):
     return render(request, "blog/about.html", {"title": "About"})
+
+
+def contributors(request):
+    return render(request, "blog/contributors.html", {"title": "contributors"})
