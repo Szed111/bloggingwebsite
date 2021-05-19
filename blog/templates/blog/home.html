@@ -1,21 +1,62 @@
 {% extends "blog/base.html" %}
 {% block content %}
-{% for post in posts %}
-<!-- <h1>{{post.title}}</h1>
+<div class="mywith2 float-left">
+    {% for post in posts %}
+    <!-- <h1>{{post.title}}</h1>
 <p>{{post.author}} on {{post.date_posted}}</p>
 <p>{{post.content}}</p> -->
-<div id="loop" class="container bg-2 d-flex justify-content-start">
-    <div class="p-2"><img class="img-1" src="{{ post.author.profile.image.url }}" alt="Profile"></div>
-    <div class="p-2 w-100">
-        <a href="{% url 'user-posts' post.author.username %}" class="username-1">{{post.author}}</a>
-        <b style="color: #9c9b9b; font-weight: normal;">{{post.date_posted|date:"F d, Y"}}</b>
-        <hr>
-        <h3><a class="head-1" href="{% url 'post-detail' post.id %}" class="article-title">{{post.title}}</a></h3>
-        <p class="message-1">{{post.content}}</p>
+    <div id="loop" class="bg-2 d-flex justify-content-start">
+        <div class="p-2"><img class="img-1" src="{{ post.author.profile.image.url }}" alt="Profile"></div>
+        <div class="p-2 w-100">
+            <a href="{% url 'user-posts' post.author.username %}" class="username-1">{{post.author}}</a>
+            <b style="color: #9c9b9b; font-weight: normal;">{{post.date_posted|date:"F d, Y"}}</b>
+            <hr>
+            <h3><a class="head-1" href="{% url 'post-detail' post.id %}" class="article-title">{{post.title}}</a></h3>
+            <p class="message-1">{{post.content}}</p>
+        </div>
     </div>
+    <br>
+    {% endfor %}
 </div>
-<br>
-{% endfor %}
+<div class="mywith1 float-right">
+    {% for links in linkinfo %}
+    <h6>{{links.link_title}}<i class="fa fa-link" aria-hidden="true"></i></h6>
+    {{ links.link_format|safe|escape }}
+    <!-- <div class="border-top border-dark mb-4">
+        <a href="#SocialWar" onclick="window.open('https://www.techgig.com/')" class="nav-link"><b><span
+                    class="">T</span><span style="color: red;">G</span></b> TechGig</a>
+        <a href="#SocialWar" onclick="window.open('https://www.eckovation.com/')" class="nav-link"><i class="fa fa-book"
+                aria-hidden="true"></i></b> Eckovation</a>
+        <a href="#SocialWar" onclick="window.open('https://www.greatlearning.in/')" class="nav-link"><b><span
+                    class="">G</span><span style="color: blue;">L</span></b> Great Learning</a>
+        <a href="#SocialWar" onclick="window.open('https://www.careerindia.com/')" class="nav-link"><i
+                class="fas fa-graduation-cap"></i> CareerIndia</a>
+    </div> -->
+    {% endfor %}
+    <!-- <h6>Trending Languages <i class="fas fa-file-code"></i></h6>
+    <div class="border-top border-dark mb-4">
+        <a href="#SocialWar" onclick="window.open('https://www.javascript.com/')" class="nav-link"><i class="fab fa-js"
+                style="color: rgb(128, 126, 10);"></i> JavaScript</a>
+        <a href="#SocialWar" onclick="window.open('https://developer.apple.com/swift/')" class="nav-link"><i
+                class="fab fa-swift" style="color: orange;"></i> Swift</a>
+        <a href="#SocialWar" onclick="window.open('https://www.scala-lang.org/')" class="nav-link"><b><span
+                    style="color: red;">S</span></b> Scala</a>
+        <a href="#SocialWar" onclick="window.open('https://go.dev/')" class="nav-link"><span
+                style="color: skyblue;">Go</span></a>
+    </div>
+    <h6>Learning Code Online</h6>
+    <div class="border-top border-dark mb-4">
+        <a href="#SocialWar" onclick="window.open('https://www.w3schools.com/')" class="nav-link"><span
+                style="color: green;">W<sup>3</sup></span> W3schools</a>
+        <a href="#SocialWar" onclick="window.open('https://www.codecademy.com/')" class="nav-link"><b
+                class="text-dark"><span class="border border-dark">code</span><span
+                    class="border-bottom border-dark">cademy</span></b></a>
+        <a href="#SocialWar" onclick="window.open('https://teamtreehouse.com/')" class="nav-link"><b><span
+                    style="color: green;">TH</span></b> Treehouse</a>
+        <a href="#SocialWar" onclick="window.open('https://stackoverflow.com/')" class="nav-link"><i
+                class="fab fa-stack-overflow" style="color: orange;"></i> Stackoverflow</a>
+    </div> -->
+</div>
 <div class="container">
     <div class="container bg-3">
         {% if is_paginated %}
