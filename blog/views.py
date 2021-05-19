@@ -39,10 +39,8 @@ class PostListView(ListView):
     # paginate_by = 5
 
     def get_context_data(self, **kwargs):
-        posts = Post.objects.all().order_by("-id")
-        linkinfo = ImpLink.objects.all()
-        context = {"posts": posts}
-
+        context = super(PostListView, self).get_context_data(**kwargs)
+        context["linkinfo"] = ImpLink.objects.all()
         return context
 
 
