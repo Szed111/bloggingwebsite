@@ -41,7 +41,7 @@ class PostListView(ListView):
     def get_context_data(self, **kwargs):
         posts = Post.objects.all().order_by("-id")
         linkinfo = ImpLink.objects.all()
-        context = {"posts": posts, "linkinfo": linkinfo}
+        context = {"posts": posts}
 
         return context
 
