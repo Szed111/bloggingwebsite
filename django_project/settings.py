@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ["learningblogweb.herokuapp.com"]
 
 INSTALLED_APPS = [
     "users.apps.UsersConfig",
+    "search.apps.SearchConfig",
     "crispy_forms",
     "blog.apps.BlogConfig",
     "django.contrib.admin",

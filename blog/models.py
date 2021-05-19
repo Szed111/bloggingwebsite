@@ -35,3 +35,11 @@ class Comment(models.Model):
 
     def get_absolute_url(self):
         return reverse("post-detail", kwargs={"pk": self.post.pk})
+
+
+class ImpLink(models.Model):
+    link_title = models.CharField(max_length=100)
+    link_format = models.TextField()
+
+    def __str__(self):
+        return "LinkTile {}".format(self.link_title)
