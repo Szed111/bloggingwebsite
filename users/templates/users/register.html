@@ -5,8 +5,14 @@
     <form method="POST">
         {% csrf_token %}
         {{form|crispy}}
+        <div class="custom-control custom-checkbox mr-sm-2">
+            <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+            <label class="custom-control-label" for="customControlAutosizing"><small class="text-muted"> I have read and
+                    agree to the <a href="{% url 'blog-contributors'%}">Terms and Conditions and Privacy
+                        Policy</a></small></label>
+        </div>
         <div class="p-3 ">
-            <button type="submit" class="btn bg-1 text-light">Submit</button>
+            <button id="shommanbtn" type="submit" class="btn bg-1 text-light" disabled>Submit</button>
         </div>
     </form>
 
@@ -17,6 +23,19 @@
     </div>
 
 </div>
-
+<script>
+    $(document).ready(function () {
+        $('#customControlAutosizing').click(function () {
+            if ($(this).prop("checked") == true) {
+                console.log("Checkbox is checked.");
+                $("#shommanbtn").removeAttr("disabled")
+            }
+            else if ($(this).prop("checked") == false) {
+                console.log("Checkbox is unchecked.");
+                $("#shommanbtn").attr("disabled", true)
+            }
+        });
+    });
+</script>
 </div>
 {% endblock %}
