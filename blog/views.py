@@ -35,12 +35,23 @@ class PostListView(ListView):
     # the variable as below
     # negative sign means dates from newest to oldest
     #  and it sets the order of the posts
-    # context_object_name = "posts"
-    # paginate_by = 5
+    context_object_name = "posts"
+    paginate_by = 5
+    ordering = ["-date_posted"]
 
     def get_context_data(self, **kwargs):
         context = super(PostListView, self).get_context_data(**kwargs)
         context["linkinfo"] = ImpLink.objects.all()
+        list_exam = Post.objects.all().order_by("-id")
+        paginator = Paginator(list_exam, self.paginate_by)
+
+        page = self.request.GET.get("page")
+
+        try:
+            file_exams = paginator.page(page)
+        except:
+            file_exams = paginator.page(1)
+
         return context
 
 
