@@ -14,7 +14,7 @@
         <a class="btn btn-outline-danger" href="{% url 'post-delete' object.id %}">Delte Post</a>
         {% endif%}
         <h3 class="article-title">{{object.title}}</h3>
-        <p class="message-1">{{object.content}}</p>
+        <p class="message-1">{{object.content|linebreaks}}</p>
     </div>
 </div>
 <div id="loop" class="container bg-2">
