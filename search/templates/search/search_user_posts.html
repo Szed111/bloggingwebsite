@@ -2,7 +2,11 @@
 {% block content %}
 <div class="container">
     <div class="container bg-3">
+        {% if posts %}
         <h1>Posts by {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h1>
+        {%else%}
+        <h1>No user with username {{ view.kwargs.username }}</h1>
+        {%endif%}
     </div>
 </div>
 {% for post in posts %}
