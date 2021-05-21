@@ -13,9 +13,12 @@ from django.http import Http404
 def search_page(request):
     if request.method == "POST":
         searched = request.POST["searched"]
-        return HttpResponseRedirect(
-            reverse("search-user-posts", kwargs={"username": searched})
-        )
+        if searched:
+            return HttpResponseRedirect(
+                reverse("search-user-posts", kwargs={"username": searched})
+            )
+        else:
+            return render(request, "search/search_page.html", {})
 
     else:
         return render(request, "search/search_page.html", {})

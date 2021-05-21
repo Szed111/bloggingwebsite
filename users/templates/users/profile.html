@@ -1,6 +1,7 @@
 {% extends "blog/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
+<div class="container p-2">
 <div class='bg-2 container p-2'>
     <div class="p-1 float-left">
         <img class="img-2" src="{{ user.profile.image.url }}" alt="Profile pic">
@@ -19,5 +20,6 @@
                 <button type="submit" class="btn bg-1 text-light">Update</button>
             </div>
         </form>
+    </div>
     </div>
 </div>{% endblock %}

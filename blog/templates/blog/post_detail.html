@@ -3,6 +3,7 @@
 <!-- <h1>{{post.title}}</h1>
 <p>{{post.author}} on {{post.date_posted}}</p>
 <p>{{post.content}}</p> -->
+<div class="container p-2">
 <div id="loop" class="container bg-2 d-flex justify-content-start">
     <div class="p-2"><img class="img-1" src="{{ object.author.profile.image.url }}" alt="Profile"></div>
     <div class="p-2 w-100">
@@ -30,6 +31,7 @@
     </div>
     <div class="p-1"></div>
     {% endfor %}
+</div>
 </div>
 {% endblock content %}
 

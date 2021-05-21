@@ -121,6 +121,10 @@
             width: 100%;
         }
 
+        .carousel-inner img {
+            width: 100%;
+            height: 430px;
+        }
         @media only screen and (max-width: 991px) {
             .mywith2 {
                 width: 100%;
@@ -137,7 +141,8 @@
     <nav class="navbar navbar-expand-lg  bg-1">
         <div class="container">
             <div class="container">
-                <a class="navbar-brand text-light" href="{% url 'blog-home'%}">Learning Blog</a>
+                <a class="navbar-brand text-light" href="{% url 'blog-home'%}"><b style="font-size: x-large; font-weight: bold;font-family: 'Courier New', monospace; ">L<sub>B</sub></b> Learning Blog</a>
+                
                 <button class="navbar-toggler collapsed" data-target="#navbarNav" data-toggle="collapse"
                     aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="text-light"><i class="fa fa-bars" aria-hidden="true"></i></span>
@@ -182,10 +187,8 @@
         </div>
     </nav>
 
-    <br>
-
-    <div class="container p-2">
-        <div class="container p-2">
+    <div class="container">
+        <div class="container">
             {% if message %}
             {% for message in messages %}
             <div class='alert alert-{{message.tags}}'>
@@ -195,7 +198,7 @@
             {% endif %}
         </div>
     </div>
-    <div class="container p-2 main-container">
+    <div class="main-container">
         {% block content %}{% endblock %}
     </div>
 
@@ -203,7 +206,9 @@
         <div class="container p-4">
             <small>Designed and built with all the love in the world by the LearningBlog team with the help of our
                 contributors.<br>
-                <a href="{% url 'blog-contributors'%}">Disclaimer</a></small>
+                <a href="{% url 'blog-contributors'%}">Disclaimer</a></small><br>
+                <small>LearningBlog Team : </small><br>
+                <small class="border border-light"> &ThinSpace; <a class="text-decoration-none text-light" href="#Z.Sankalp">Z.Sankalp</a> | <a class="text-decoration-none text-light" href="#KICKSharath">R.Sharath</a> | <a class="text-decoration-none text-light" href="#Ch.SaiKumar">Ch.SaiKumar</a> &ThinSpace; </small>
         </div>
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
             © 2021 Copyright:
