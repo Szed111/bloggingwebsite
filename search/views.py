@@ -37,7 +37,7 @@ class SearchUserPostListView(ListView):
 
     def get_queryset(self):
         try:
-            user = User.objects.get(username=self.kwargs.get("username"))
+            user = User.objects.get(username__istartswith=self.kwargs.get("username"))
             return Post.objects.filter(author=user).order_by("-date_posted")
         except:
             return User.objects.none()
